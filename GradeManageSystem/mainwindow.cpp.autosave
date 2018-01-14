@@ -1,0 +1,153 @@
+#include "mainwindow.h"
+#include "ui_mainwindow.h"
+#include "dialog.h"
+#include "dialog2.h"
+#include "signup.h"
+#include "alert.h"
+#include <QDebug>
+#include <QSqlQueryModel>
+#include <QSqlQuery>
+#include <QSqlError>
+#include <QMessageBox>
+#include <QTextStream>
+#include <stdio.h>
+bool OpenDatabase()
+{
+    QSqlDatabase    dbconn;
+    dbconn = QSqlDatabase::addDatabase("QMYSQL");
+   //QString sname = QString::fromLocal8Bit("vayne");      //数据源名称
+    dbconn.setHostName("localhost");//主机名字
+    dbconn.setPort(3306);
+    dbconn.setDatabaseName("vayne");//数据库名字
+    dbconn.setUserName("root");//用户名
+    dbconn.setPassword("745213");//密码
+    if(!dbconn.open())                                      //打开数据库
+    {
+        qDebug()<<dbconn.lastError().text();
+        QMessageBox::critical(0, QObject::tr("Database error"), dbconn.lastError().text());
+        return false;                                   //打开失败
+    }
+    else
+        qDebug()<<"database open success!";
+    return true;
+}
+
+MainWindow::MainWindow(QWidget *parent) :
+    QMainWindow(parent),
+
+    ui(new Ui::MainWindow)
+{
+    OpenDatabase();
+
+    ui->setupUi(this);
+}
+void MainWindow::on_pushButton_clicked(){
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    Dialog2 dialog;
+    dialog.exec();
+    if(dialog.result() == Dialog2::Rejected)
+        return;
+    QString course = dialog.getCourse();
+    QString teacher = dialog.getTeacher();
+    model->setQuery("select * from student_course where  teacher = '"+teacher+"' and course = '"+course+"';");//这里直接设置SQL语句，忽略最后一个参数
+    ui->tableView->setModel(model);
+}
+void MainWindow::on_pushButton_2_clicked(){
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    Dialog dialog;
+    dialog.exec();
+    if(dialog.result() == Dialog::Rejected)
+        return;
+    QString result = dialog.getInput();
+    model->setQuery("select * from student_course where  name = '"+result+"';");//这里直接设置SQL语句，忽略最后一个参数
+    ui->tableView->setModel(model);
+}
+void MainWindow::on_pushButton_3_clicked(){
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    Dialog dialog;
+    dialog.exec();
+    if(dialog.result() == Dialog::Rejected)
+        return;
+    QString result = dialog.getInput();
+    model->setQuery("select * from student_course where  course = '"+result+"';");//这里直接设置SQL语句，忽略最后一个参数
+    ui->tableView->setModel(model);
+}
+void MainWindow::on_pushButton_4_clicked(){
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    Dialog dialog;
+    dialog.exec();
+    if(dialog.result() == Dialog::Rejected)
+        return;
+    QString result = dialog.getInput();
+    model->setQuery("select * from student_course where  course = '"+result+"';");//这里直接设置SQL语句，忽略最后一个参数
+    ui->tableView->setModel(model);
+}
+void MainWindow::on_pushButton_5_clicked(){
+    QSqlQueryModel *model = new QSqlQueryModel;
+    QSqlQuery query;
+    SignUp dialog;
+    dialog.exec();
+    if(dialog.result() == SignUp::Rejected)
+        return;
+    QString name = dialog.getName();
+    QString password = dialog.getPassword();
+    query.exec("insert into user (name,password) values('"+name+"','"+password+"');");//这里直接设置SQL语句，忽略最后一个参数
+    QSqlError error = query.lastError();
+    if(error.isValid())//发生错误时isValid()返回true
+    {
+        switch (error.type())
+        {
+             case QSqlError::NoError:
+                   break;
+        default:
+               //ErrorBox("格式错误.");
+               return;
+        }
+    }
+}
+void MainWindow::on_pushButton_6_clicked(){
+    QTextStream cin(stdin,  QIODevice::ReadOnly);
+    QTextStream cout(stdout,  QIODevice::WriteOnly);
+    QTextStream cerr(stderr,  QIODevice::WriteOnly);
+    QSqlQueryModel *model = new QSqlQueryModel;
+    SignUp dialog;
+    dialog.exec();
+    if(dialog.result() == SignUp::Rejected)
+        return;
+    QString name = dialog.getName();
+    QString password = dialog.getPassword();
+    QSqlQuery query("select password from user where name ='"+name+"';");//这里直接设置SQL语句，忽略最后一个参数
+    query.next();
+    QString _password = query.value(0).toString();//获取密码
+    if(password==_password){
+        SignUp::isLogIn=true;
+        Alert alert;
+        alert.SetLabel("登录成功!");
+        alert.exec();
+    }
+    else{
+        Alert alert;
+        alert.SetLabel("密码错误!");
+        alert.exec();
+    }
+    QSqlError error = query.lastError();
+    if(error.isValid())//发生错误时isValid()返回true
+    {
+        switch (error.type())
+        {
+             case QSqlError::NoError:
+                   break;
+        default:
+               //ErrorBox("格式错误.");
+               return;
+        }
+    }
+}
+MainWindow::~MainWindow()
+{
+    delete ui;
+}
