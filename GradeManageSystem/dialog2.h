@@ -15,6 +15,7 @@ public:
     QString getCourse();
     QString getTeacher();
     void SetLabel(QString A);
+    void SetLabel_2(QString A);
 private slots:
     void on_buttonBox_accepted();
 

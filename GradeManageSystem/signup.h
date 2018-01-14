@@ -12,6 +12,7 @@ public:
     QString getName();
     QString getPassword();
     void SetLabel(QString A);
+    void SetLabel_2(QString A);
     static bool isLogIn;
 private slots:
     void on_buttonBox_accepted();

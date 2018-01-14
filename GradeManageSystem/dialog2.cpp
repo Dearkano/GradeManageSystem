@@ -24,6 +24,10 @@ void Dialog2::SetLabel(QString A)
 {
     ui->label->setText(A);
 }
+void Dialog2::SetLabel_2(QString A)
+{
+    ui->label_2->setText(A);
+}
 void Dialog2::on_buttonBox_accepted()
 {
 

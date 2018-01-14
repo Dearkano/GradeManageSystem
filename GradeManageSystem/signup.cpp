@@ -21,6 +21,10 @@ void SignUp::SetLabel(QString A)
 {
     ui->label->setText(A);
 }
+void SignUp::SetLabel_2(QString A)
+{
+    ui->label_2->setText(A);
+}
 void SignUp::on_buttonBox_accepted()
 {
 

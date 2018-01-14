@@ -15,20 +15,26 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <property name="styleSheet">
-    <string notr="true">background-color: rgb(254, 255, 193);</string>
+    <string notr="true"/>
    </property>
    <widget class="QWidget" name="verticalLayoutWidget">
     <property name="geometry">
      <rect>
       <x>160</x>
-      <y>219</y>
+      <y>158</y>
       <width>160</width>
-      <height>251</height>
+      <height>441</height>
      </rect>
     </property>
     <layout class="QVBoxLayout" name="verticalLayout">
      <item>
       <widget class="QPushButton" name="pushButton_3">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>查询学科成绩</string>
        </property>
@@ -36,6 +42,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_4">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>查询专业班成绩</string>
        </property>
@@ -43,6 +55,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_2">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>查询学生成绩</string>
        </property>
@@ -50,6 +68,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>查询班级成绩</string>
        </property>
@@ -57,13 +81,51 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_7">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>录入成绩</string>
        </property>
       </widget>
      </item>
      <item>
+      <widget class="QPushButton" name="pushButton_8">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>修改成绩</string>
+       </property>
+      </widget>
+     </item>
+     <item>
+      <widget class="QPushButton" name="pushButton_9">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
+       <property name="text">
+        <string>删除成绩</string>
+       </property>
+      </widget>
+     </item>
+     <item>
       <widget class="QPushButton" name="pushButton_6">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>登录</string>
        </property>
@@ -71,6 +133,12 @@
      </item>
      <item>
       <widget class="QPushButton" name="pushButton_5">
+       <property name="minimumSize">
+        <size>
+         <width>0</width>
+         <height>40</height>
+        </size>
+       </property>
        <property name="text">
         <string>注册</string>
        </property>
@@ -91,15 +159,20 @@
    <widget class="QLabel" name="label">
     <property name="geometry">
      <rect>
-      <x>430</x>
-      <y>60</y>
-      <width>341</width>
-      <height>41</height>
+      <x>420</x>
+      <y>40</y>
+      <width>491</width>
+      <height>81</height>
      </rect>
     </property>
     <property name="font">
      <font>
-      <pointsize>25</pointsize>
+      <family>幼圆</family>
+      <pointsize>35</pointsize>
+      <weight>75</weight>
+      <italic>false</italic>
+      <bold>true</bold>
+      <strikeout>false</strikeout>
      </font>
     </property>
     <property name="text">

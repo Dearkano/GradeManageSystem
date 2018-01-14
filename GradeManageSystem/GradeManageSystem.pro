@@ -29,18 +29,24 @@ SOURCES += \
     dialog.cpp \
     dialog2.cpp \
     signup.cpp \
-    alert.cpp
+    alert.cpp \
+    add.cpp \
+    delete.cpp
 
 HEADERS += \
         mainwindow.h \
     dialog.h \
     dialog2.h \
     signup.h \
-    alert.h
+    alert.h \
+    add.h \
+    delete.h
 
 FORMS += \
         mainwindow.ui \
     dialog.ui \
     dialog2.ui \
     signup.ui \
-    alert.ui
+    alert.ui \
+    add.ui \
+    delete.ui
